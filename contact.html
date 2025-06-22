@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanFix | Contact Us</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary" href="index.html">CareVio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="booking.html">Book Now</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="btn btn-sm btn-primary text-white px-3 rounded-pill login-btn" href="login.html">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<!-- Contact Section -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Get In Touch With Us</h2>
+    <div class="row g-4">
+
+      <div class="col-md-6" data-aos="fade-right">
+        <form class="bg-white p-4 shadow rounded">
+          <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+
+      <div class="col-md-6" data-aos="fade-left">
+        <div class="bg-white p-4 shadow rounded h-100">
+          <h5>Contact Details</h5>
+          <p><i class="fas fa-map-marker-alt text-primary me-2"></i> 123 Urban Street, Kolkata, WB 700001</p>
+          <p><i class="fas fa-envelope text-primary me-2"></i> support@urbanfix.com</p>
+          <p><i class="fas fa-phone text-primary me-2"></i> +91 98765 43210</p>
+
+          <h5 class="mt-4">Working Hours</h5>
+          <p>Mon - Sat: 9:00 AM - 8:00 PM<br>Sunday: Closed</p>
+
+          <h5 class="mt-4">Follow Us</h5>
+          <a href="#" class="me-3 text-primary"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="me-3 text-primary"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="me-3 text-primary"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+      <p class="mb-0">&copy; 2025 CareVio. All rights reserved.</p>
+    </div>
+  </footer>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+/* ========== BASE STYLES ========== */
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 600;
+  color: #222;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ========== HEADER SECTION ========== */
+
+.login-btn {
+    margin-top: 5px;
+    margin-left: 8px;
+}
+
+/* ========== HERO SECTION ========== */
+.hero-slide {
+  height: 90vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-slide .overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+  z-index: 1;
+}
+
+.hero-slide .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-slide h1,
+.hero-slide p {
+  color: #fff;
+}
+
+.hero-slide .btn {
+  padding: 12px 30px;
+  font-size: 1rem;
+  border-radius: 30px;
+  box-shadow: 0 0.25rem 1rem rgba(0,0,0,0.1);
+}
+
+.slick-dots {
+    bottom: 10px;
+}
+
+.slick-dots li.slick-active button:before {
+    color: #fff !important;
+}
+
+/* ========== SERVICES SECTION ========== */
+.service-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.service-card img {
+  object-fit: cover;
+  height: 250px;
+  width: 100%;
+}
+
+.service-card .card-body {
+  padding: 1.5rem;
+}
+
+.service-card .card-title {
+  font-size: 1.2rem;
+  color: #0d6efd;
+}
+
+.service-card .btn {
+  margin-top: 1rem;
+  transition: all 0.3s;
+}
+
+.service-card .btn:hover {
+  background-color: #0d6efd;
+  color: white;
+  border-color: #0d6efd;
+}
+
+/* ========== BOOKING FORM ========== */
+form {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+form label {
+  font-weight: 500;
+  color: #333;
+}
+
+form .form-control, form .form-select, form textarea {
+  border-radius: 6px;
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+form .btn {
+  padding: 10px 24px;
+  font-weight: 500;
+  border-radius: 30px;
+}
+
+form .btn:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+/* ========== CONTACT SECTION ========== */
+.contact-info h5 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.contact-info p,
+.contact-info a {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.contact-info i {
+  width: 20px;
+}
+
+.contact-info a:hover {
+  color: #0d6efd;
+  text-decoration: underline;
+}
+
+/* ========== TESTIMONIALS ========== */
+.testimonials .shadow {
+  background: #fff;
+  border-left: 4px solid #0d6efd;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background-color: #111;
+  color: #eee;
+}
+
+
+
+
+
+
+
+
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1060; /* MUST be higher than modal (Bootstrap modal uses ~1050) */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast {
+  background-color: #198754; /* Bootstrap success green */
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: toast-fade 3s ease-in-out;
+}
+
+@keyframes toast-fade {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+
+
+
+
+
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 991.9px) {
+    .login-btn {
+        margin-top: 0;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 767.9px) {
+  .hero-slide h1 {
+    font-size: 1.8rem;
+  }
+  .hero-slide p {
+    font-size: 1rem;
+  }
+}
+
+/* ========== SLICK SLIDER OVERRIDES ========== */
+.slick-prev:before,
+.slick-next:before {
+  color: #fff;
+  font-size: 30px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #fff;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #0d6efd;
+}
+
