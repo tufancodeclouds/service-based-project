@@ -1,142 +1,166 @@
-<!-- booking.html content update to support multiple bookings -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UrbanFix | Book a Service</title>
+  <title>UrbanSnap | On Demand Home Services</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
 
-<!-- Navbar -->
+<body>
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-bold text-primary" href="index.html">CareVio</a>
+      <a class="navbar-brand fw-bold text-primary" href="index.html">UrbanSnap</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <ul class="navbar-nav ms-auto align-items-center gap-2">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
           <li class="nav-item"><a class="nav-link" href="booking.html">Book Now</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item"><a class="btn btn-sm btn-primary text-white px-3 rounded-pill login-btn" href="login.html">Login</a></li>
+          <li class="nav-item d-none" id="welcomeUserLi">
+            <span id="welcomeUser" class="nav-link fw-semibold text-dark"></span>
+          </li>
+          <li class="nav-item" id="loginNav">
+            <a class="btn btn-sm btn-primary text-white px-3 rounded-pill" id="loginBtn" href="login.html">Login</a>
+          </li>
+          <li class="nav-item d-none" id="logoutNav">
+            <button class="btn btn-sm btn-danger px-3 rounded-pill" id="logoutBtn">Logout</button>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
-<!-- Booking Section -->
-<section class="py-5 text-center">
-  <div class="container">
-    <h2 class="mb-4">Book a Service</h2>
-    <!-- Book Now Top Button -->
-    <button id="openBookingBtn" class="btn btn-primary mb-4">Book a Service</button>
+  <section class="py-5 booking-main-content">
+    <div class="container">
+      <h2 class="text-center mb-4">Book Your Service</h2>
 
-    <!-- No Bookings Message -->
-    <div id="bookedServicesContainer">
-      <div id="noBookings" class="alert alert-warning">
-        You have not booked any services yet.
-        <br />
-        <button class="btn btn-outline-primary mt-2" onclick="document.getElementById('openBookingBtn').click()">
-          Book a Service
-        </button>
+      <div id="notLoggedInMsg" class="text-center d-none">
+        <div class="alert alert-danger w-50 mx-auto" role="alert">
+          You are not logged in. Please <a href="login.html" class="link-primary">login</a> to continue.
+        </div>
       </div>
 
-      <!-- Booked Services List -->
-      <div id="bookedServicesList"></div>
+      <div id="bookingContent" class="d-none">
+        <div class="text-end mb-3">
+          <button class="btn btn-primary" id="openBookingBtn">Book a Service</button>
+        </div>
+
+        <div id="noBookings" class="alert alert-warning text-center">You have not booked any services yet.</div>
+
+        <div id="bookedServicesList"></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-<!-- Booking Modal -->
-<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="bookingModalLabel">Book a Service</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <form id="bookingForm">
-  <div class="mb-3">
-    <label for="name" class="form-label">Full Name</label>
-    <input type="text" class="form-control" id="name" required />
-  </div>
-  <div class="mb-3">
-    <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email" />
-  </div>
-  <div class="mb-3">
-    <label for="phone" class="form-label">Phone</label>
-    <input type="tel" class="form-control" id="phone" required />
-  </div>
-  <div class="mb-3">
-    <label for="service" class="form-label">Select Service</label>
-    <select id="service" class="form-select" required>
-  <option value="">Choose...</option>
-  <option value="Salon for Women">Salon for Women</option>
-  <option value="Electrician">Electrician</option>
-  <option value="Home Cleaning">Home Cleaning</option>
-  <option value="AC Repair">AC Repair</option>
-  <option value="Plumber">Plumber</option>
-  <option value="Appliance Repair">Appliance Repair</option>
-  <option value="Carpenter">Carpenter</option>
-  <option value="Pest Control">Pest Control</option>
-  <option value="Painting">Painting</option>
-</select>
-
-  </div>
-  <div class="mb-3">
-    <label for="date" class="form-label">Date</label>
-    <input type="date" class="form-control" id="date" required />
-  </div>
-  <div class="mb-3">
-    <label for="time" class="form-label">Time</label>
-    <input type="time" class="form-control" id="time" required />
-  </div>
-  <div class="mb-3">
-    <label for="address" class="form-label">Address</label>
-    <textarea id="address" class="form-control" required></textarea>
-  </div>
-  <div class="text-end">
-    <button type="submit" class="btn btn-success">Confirm Booking</button>
-  </div>
-</form>
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="bookingModalLabel">Book a Service</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="bookingForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="name" required />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" />
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone</label>
+              <input type="tel" class="form-control" id="phone" required />
+            </div>
+            <div class="mb-3">
+              <label for="service" class="form-label">Select Service</label>
+              <select id="service" class="form-select" required>
+                <option value="">Choose...</option>
+                <option value="Salon for Women">Salon for Women</option>
+                <option value="Electrician">Electrician</option>
+                <option value="Home Cleaning">Home Cleaning</option>
+                <option value="AC Repair">AC Repair</option>
+                <option value="Plumber">Plumber</option>
+                <option value="Appliance Repair">Appliance Repair</option>
+                <option value="Carpenter">Carpenter</option>
+                <option value="Pest Control">Pest Control</option>
+                <option value="Painting">Painting</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="date" class="form-label">Date</label>
+              <input type="date" class="form-control" id="date" required />
+            </div>
+            <div class="mb-3">
+              <label for="time" class="form-label">Time</label>
+              <input type="time" class="form-control" id="time" required />
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">Address</label>
+              <textarea id="address" class="form-control" required></textarea>
+            </div>
+            <div class="text-end">
+              <button type="submit" class="btn btn-success">Confirm Booking</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Footer -->
-  <footer class="bg-dark text-white py-4">
+  <footer class="bg-dark text-white py-3">
     <div class="container text-center">
-      <p class="mb-0">&copy; 2025 CareVio. All rights reserved.</p>
+      <p class="mb-0">&copy; <span id="currentYear"></span> UrbanSnap. All rights reserved.</p>
     </div>
   </footer>
 
-<!-- Booking Confirmation Modal -->
-<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="bookingModalLabel">Booking Confirmed</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body" id="bookingModalBody"></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+  <script>
+    function updateNavbarLoginState() {
+      const user = JSON.parse(localStorage.getItem('loggedInUser'));
+      const welcomeUserLi = document.getElementById('welcomeUserLi');
+      const welcomeUser = document.getElementById('welcomeUser');
+      const loginNav = document.getElementById('loginNav');
+      const logoutNav = document.getElementById('logoutNav');
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/script.js"></script>
+      if (user) {
+        welcomeUser.textContent = `Welcome, ${user.name}`;
+        welcomeUserLi.classList.remove('d-none');
+        loginNav.classList.add('d-none');
+        logoutNav.classList.remove('d-none');
+      } else {
+        welcomeUser.textContent = '';
+        welcomeUserLi.classList.add('d-none');
+        loginNav.classList.remove('d-none');
+        logoutNav.classList.add('d-none');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', updateNavbarLoginState);
+
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('loggedInUser');
+        showToast("You've been logged out.");
+        setTimeout(() => location.href = 'index.html', 1000);
+      });
+    }
+  </script>
+
+  <script>
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
 </body>
+
 </html>

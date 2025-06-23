@@ -3,70 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UrbanFix | Contact Us</title>
-
-  <!-- Bootstrap 5 -->
+  <title>UrbanSnap | On Demand Home Services</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <!-- AOS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-
-  <!-- Custom CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
 
-<!-- Navbar -->
+<body>
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-bold text-primary" href="index.html">CareVio</a>
+      <a class="navbar-brand fw-bold text-primary" href="index.html">UrbanSnap</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <ul class="navbar-nav ms-auto align-items-center gap-2">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
           <li class="nav-item"><a class="nav-link" href="booking.html">Book Now</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item"><a class="btn btn-sm btn-primary text-white px-3 rounded-pill login-btn" href="login.html">Login</a></li>
+          <li class="nav-item d-none" id="welcomeUserLi">
+            <span id="welcomeUser" class="nav-link fw-semibold text-dark"></span>
+          </li>
+          <li class="nav-item" id="loginNav">
+            <a class="btn btn-sm btn-primary text-white px-3 rounded-pill" id="loginBtn" href="login.html">Login</a>
+          </li>
+          <li class="nav-item d-none" id="logoutNav">
+            <button class="btn btn-sm btn-danger px-3 rounded-pill" id="logoutBtn">Logout</button>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
-<!-- Contact Section -->
-<section class="py-5">
-  <div class="container">
-    <h2 class="text-center mb-5">Get In Touch With Us</h2>
-    <div class="row g-4">
+  <section class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">Get In Touch With Us</h2>
+      <div class="row g-4">
 
-      <div class="col-md-6" data-aos="fade-right">
-        <form class="bg-white p-4 shadow rounded">
-          <div class="mb-3">
-            <label for="name" class="form-label">Your Name</label>
-            <input type="text" class="form-control" id="name" required>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" required>
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea class="form-control" id="message" rows="4" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
-      </div>
+        <div class="col-md-6">
+          <img src="images/contact.png" class="w-100 h-100 object-fit-cover" alt="contact">
+        </div>
 
-      <div class="col-md-6" data-aos="fade-left">
-        <div class="bg-white p-4 shadow rounded h-100">
+        <div class="col-md-6">
           <h5>Contact Details</h5>
           <p><i class="fas fa-map-marker-alt text-primary me-2"></i> 123 Urban Street, Kolkata, WB 700001</p>
-          <p><i class="fas fa-envelope text-primary me-2"></i> support@urbanfix.com</p>
+          <p><i class="fas fa-envelope text-primary me-2"></i> support@urbansnap.com</p>
           <p><i class="fas fa-phone text-primary me-2"></i> +91 98765 43210</p>
 
           <h5 class="mt-4">Working Hours</h5>
@@ -78,24 +61,54 @@
           <a href="#" class="me-3 text-primary"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Footer -->
-  <footer class="bg-dark text-white py-4">
+  <footer class="bg-dark text-white py-3">
     <div class="container text-center">
-      <p class="mb-0">&copy; 2025 CareVio. All rights reserved.</p>
+      <p class="mb-0">&copy; <span id="currentYear"></span> UrbanSnap. All rights reserved.</p>
     </div>
   </footer>
 
-<!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
+  <script>
+    function updateNavbarLoginState() {
+      const user = JSON.parse(localStorage.getItem('loggedInUser'));
+      const welcomeUserLi = document.getElementById('welcomeUserLi');
+      const welcomeUser = document.getElementById('welcomeUser');
+      const loginNav = document.getElementById('loginNav');
+      const logoutNav = document.getElementById('logoutNav');
+
+      if (user) {
+        welcomeUser.textContent = `Welcome, ${user.name}`;
+        welcomeUserLi.classList.remove('d-none');
+        loginNav.classList.add('d-none');
+        logoutNav.classList.remove('d-none');
+      } else {
+        welcomeUser.textContent = '';
+        welcomeUserLi.classList.add('d-none');
+        loginNav.classList.remove('d-none');
+        logoutNav.classList.add('d-none');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', updateNavbarLoginState);
+
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('loggedInUser');
+        showToast("You've been logged out.");
+        setTimeout(() => location.href = 'index.html', 1000);
+      });
+    }
+  </script>
+
+  <script>
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
