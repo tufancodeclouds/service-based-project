@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $('.slick-slider').slick({
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 3000,
     dots: true,
     arrows: false,
     infinite: true,
@@ -10,10 +10,5 @@ $(document).ready(function () {
     cssEase: 'ease-in-out',
     prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
     nextArrow: '<button type="button" class="slick-next"><i class="fas fa-chevron-right"></i></button>'
-  });
-
-  // Service card click effect
-  $('.service-card').on('click', function () {
-    window.location.href = 'booking.html';
   });
 });
