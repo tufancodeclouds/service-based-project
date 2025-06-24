@@ -27,7 +27,7 @@ function checkLoginStatus() {
   const bookingContent = document.getElementById('bookingContent');
 
   if (user) {
-    if (welcome) welcome.textContent = `Welcome, ${user.name}`;
+    if (welcome) welcome.innerHTML = `<i class="fa-regular fa-circle-user"></i> ${user.name.split(' ')[0]}`;
     loginBtn?.classList.add('d-none');
     logoutBtn?.classList.remove('d-none');
     notLoggedInMsg?.classList.add('d-none');
@@ -36,11 +36,11 @@ function checkLoginStatus() {
     // Show welcome toast only once
     const showLoginToast = localStorage.getItem('showLoginToast');
     if (showLoginToast === 'true') {
-      showToast(`Welcome, ${user.name}!`);
+      showToast(`Welcome, ${user.name.split(' ')[0]}!`);
       localStorage.removeItem('showLoginToast');
     }
   } else {
-    if (welcome) welcome.textContent = '';
+    if (welcome) welcome.innerHTML = '';
     loginBtn?.classList.remove('d-none');
     logoutBtn?.classList.add('d-none');
     notLoggedInMsg?.classList.remove('d-none');
@@ -60,16 +60,19 @@ function renderBookings() {
   } else {
     emptyMessage.style.display = 'none';
     bookings.forEach((booking, index) => {
-      const div = document.createElement('div');
-      div.className = 'alert alert-info d-flex justify-content-between align-items-center';
-      div.innerHTML = `
+      const colDiv = document.createElement('div');
+      colDiv.className = 'col-12';
+      const alertDiv = document.createElement('div');
+      alertDiv.className = 'alert alert-primary d-flex justify-content-between align-items-center';
+      alertDiv.innerHTML = `
         <div>
-          <strong>${booking.name}</strong> booked <strong>${booking.service}</strong> on <strong>${booking.date}</strong> at <strong>${booking.time}</strong><br>
+          <strong>${booking.name.split(' ')[0]}</strong> booked <strong>${booking.service}</strong> on <strong>${booking.date}</strong> at <strong>${booking.time}</strong><br>
           <small>${booking.address || ''}</small>
         </div>
-        <button class="btn btn-sm btn-danger" onclick="cancelBooking(${index})">Cancel</button>
+        <button class="btn btn-sm btn-danger text-white px-3 rounded-pill" onclick="cancelBooking(${index})">Cancel</button>
       `;
-      listWrapper.appendChild(div);
+      colDiv.appendChild(alertDiv);
+      listWrapper.appendChild(colDiv);
     });
   }
 }
@@ -106,7 +109,7 @@ if (bookingForm) {
     bookings.push({ name, email, phone, service, date, time, address });
     localStorage.setItem('bookings', JSON.stringify(bookings));
 
-    showToast(`Thanks ${name}, your ${service} booking is confirmed.`);
+    showToast(`Thanks ${name.split(' ')[0]}, your ${service} booking is confirmed.`);
     bookingForm.reset();
 
     const modal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
