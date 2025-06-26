@@ -267,3 +267,167 @@ footer {
   border-radius: 10px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========== ABOUT US SECTION ========== */
+.about-us-section {
+  background: linear-gradient(135deg, #f4f9ff, #ffffff);
+}
+
+.about-us-section img {
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+}
+
+.about-us-section p.lead {
+  font-size: 1.1rem;
+  color: #000;
+}
+
+.about-us-section ul li {
+  font-size: 1rem;
+  color: #333;
+}
+
+
+/* ========== HOW IT WORKS SECTION ========== */
+.how-it-works h2 {
+  font-size: 2rem;
+}
+
+.step-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+  background-color: #00000005;
+}
+
+.step-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.step-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: background-color 0.3s ease;
+}
+
+.step-card-desc {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* ========== WHY CHOOSE US SECTION ========== */
+
+.choose-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #00000005;
+}
+
+.choose-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.choose-card-desc {
+  color: #333;
+}
+
+/* === TESTIMONIALS === */
+.testimonials blockquote {
+  background: #fff;
+  border-left: 4px solid #0d6efd;
+  font-style: italic;
+  position: relative;
+}
+.testimonials blockquote::before {
+  content: "“";
+  font-size: 3rem;
+  color: #0d6efd;
+  position: absolute;
+  top: -20px;
+  left: 10px;
+}
+.testimonials footer {
+  color: #666;
+}
+
+/* === FAQ SECTION === */
+.faq-section .accordion-button {
+  font-weight: 600;
+  background-color: #fff;
+  color: #0d6efd;
+  border: none;
+}
+.faq-section .accordion-button:focus {
+  box-shadow: none;
+}
+.faq-section .accordion-button:not(.collapsed) {
+  background-color: #e7f1ff;
+}
+.faq-section .accordion-body {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* === UTILITIES === */
+.section-title {
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 2rem;
+  text-align: center;
+}
