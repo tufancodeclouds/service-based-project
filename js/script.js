@@ -48,41 +48,68 @@ function checkLoginStatus() {
   }
 }
 
-// Render all bookings
+// Format date like dd-mm-yyyy
+function formatDate(dateStr) {
+  const [yyyy, mm, dd] = dateStr.split('-');
+  return `${dd}-${mm}-${yyyy}`;
+}
+
+// Convert time like 12hr format
+function formatTime(timeStr) {
+  const [hh, mm] = timeStr.split(':');
+  const hour = parseInt(hh);
+  const suffix = hour >= 12 ? 'PM' : 'AM';
+  const adjustedHour = hour % 12 || 12;
+  return `${adjustedHour}:${mm} ${suffix}`;
+}
+
+// Render bookings for logged-in user only
 function renderBookings() {
   const listWrapper = document.getElementById('bookedServicesList');
   const emptyMessage = document.getElementById('noBookings');
+  const openBookingBtnWrapper = document.getElementById('openBookingBtnWrapper');
   const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+  const user = JSON.parse(localStorage.getItem('loggedInUser'));
 
   listWrapper.innerHTML = '';
-  if (bookings.length === 0) {
+  if (!user) return;
+
+  const userBookings = bookings.filter(booking => booking.email === user.email);
+
+  if (userBookings.length === 0) {
     emptyMessage.style.display = 'block';
+    openBookingBtnWrapper.style.display = 'none';
   } else {
     emptyMessage.style.display = 'none';
-    bookings.forEach((booking, index) => {
-      const colDiv = document.createElement('div');
-      colDiv.className = 'col-12';
-      const alertDiv = document.createElement('div');
-      alertDiv.className = 'alert alert-primary d-flex justify-content-between align-items-center';
-      alertDiv.innerHTML = `
+    openBookingBtnWrapper.style.display = 'block';
+    userBookings.forEach((booking, index) => {
+      const div = document.createElement('div');
+      div.className = 'alert alert-info d-flex justify-content-between align-items-center';
+      div.innerHTML = `
         <div>
-          <strong>${booking.name.split(' ')[0]}</strong> booked <strong>${booking.service}</strong> on <strong>${booking.date}</strong> at <strong>${booking.time}</strong><br>
+          <strong>${booking.name}</strong> booked <strong>${booking.service}</strong> on <strong>${formatDate(booking.date)}</strong> at <strong>${formatTime(booking.time)}</strong><br>
           <small>${booking.address || ''}</small>
         </div>
-        <button class="btn btn-sm btn-danger text-white px-3 rounded-pill" onclick="cancelBooking(${index})">Cancel</button>
+        <button class="btn btn-sm btn-danger" onclick="cancelBooking(${index})">Cancel</button>
       `;
-      colDiv.appendChild(alertDiv);
-      listWrapper.appendChild(colDiv);
+      listWrapper.appendChild(div);
     });
   }
 }
 
 function cancelBooking(index) {
+  const user = JSON.parse(localStorage.getItem('loggedInUser'));
   let bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
-  bookings.splice(index, 1);
-  localStorage.setItem('bookings', JSON.stringify(bookings));
-  showToast('Booking cancelled.');
-  renderBookings();
+  const userBookings = bookings.filter(b => b.email === user.email);
+
+  const globalIndex = bookings.findIndex(b => b.email === user.email && b.service === userBookings[index].service && b.date === userBookings[index].date && b.time === userBookings[index].time);
+  
+  if (globalIndex !== -1) {
+    bookings.splice(globalIndex, 1);
+    localStorage.setItem('bookings', JSON.stringify(bookings));
+    showToast('Booking cancelled.');
+    renderBookings();
+  }
 }
 
 // Booking form handler
@@ -119,15 +146,17 @@ if (bookingForm) {
 }
 
 // Open booking modal if logged in
-const openBookingBtn = document.getElementById('openBookingBtn');
-if (openBookingBtn) {
-  openBookingBtn.addEventListener('click', () => {
-    const user = JSON.parse(localStorage.getItem('loggedInUser'));
-    if (!user) {
-      return showToast('Please login to book a service.');
-    }
-    const modal = new bootstrap.Modal(document.getElementById('bookingModal'));
-    modal.show();
+const openBookingBtns = document.querySelectorAll('.openBookingBtn');
+if (openBookingBtns.length) {
+  openBookingBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const user = JSON.parse(localStorage.getItem('loggedInUser'));
+      if (!user) {
+        return showToast('Please login to book a service.');
+      }
+      const modal = new bootstrap.Modal(document.getElementById('bookingModal'));
+      modal.show();
+    });
   });
 }
 
