@@ -354,7 +354,10 @@ footer {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  transition: background-color 0.3s ease;
+}
+
+.step-icon img {
+  width: 100%;
 }
 
 .step-card-desc {
@@ -375,12 +378,15 @@ footer {
 }
 
 .icon-circle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  width: 70px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.icon-circle img {
+  width: 100%;
 }
 
 .choose-card-desc {
