@@ -84,7 +84,7 @@ function renderBookings() {
     openBookingBtnWrapper.style.display = 'block';
     userBookings.forEach((booking, index) => {
       const div = document.createElement('div');
-      div.className = 'alert alert-info d-flex justify-content-between align-items-center';
+      div.className = 'alert alert-primary d-flex justify-content-between align-items-center';
       div.innerHTML = `
         <div>
           <strong>${booking.name}</strong> booked <strong>${booking.service}</strong> on <strong>${formatDate(booking.date)}</strong> at <strong>${formatTime(booking.time)}</strong><br>
