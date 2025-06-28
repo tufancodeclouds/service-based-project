@@ -12,7 +12,33 @@
 </head>
 
 <body>
-    <div class="login-container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+          <a class="navbar-brand fw-bold text-black" href="/">UrbanSnaps</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center gap-2">
+              <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+              <li class="nav-item"><a class="nav-link" href="booking.html">Book Now</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+              <li class="nav-item d-none" id="welcomeUserLi">
+                <span id="welcomeUser" class="nav-link fw-semibold text-dark"></span>
+              </li>
+              <li class="nav-item" id="loginNav">
+                <a class="btn btn-sm btn-primary text-white px-3 rounded-pill" id="loginBtn" href="login.html">Login</a>
+              </li>
+              <li class="nav-item d-none" id="logoutNav">
+                <button class="btn btn-sm btn-danger px-3 rounded-pill" id="logoutBtn">Logout</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    
+    <section class="login-container">
         <h3 class="text-center fw-bold mb-4">Login</h3>
         <form id="loginForm">
             <div class="mb-3">
@@ -28,7 +54,13 @@
                 Don't have an account? <a href="register.html" class="link-primary">Sign Up</a>
             </div>
         </form>
-    </div>
+    </section>
+
+    <footer class="bg-dark text-white py-3">
+        <div class="container text-center">
+          <p class="mb-0">&copy; <span id="currentYear"></span> UrbanSnaps. All rights reserved.</p>
+        </div>
+    </footer>
 
     <div class="toast-container" id="toastContainer"></div>
 
