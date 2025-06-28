@@ -1,12 +1,15 @@
-/* ========== BASE STYLES ========== */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.6;
-  background-color: #f8f9fa;
+  background-color: #fff;
   color: #333;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-weight: 600;
   color: #222;
 }
@@ -19,8 +22,8 @@ a {
 /* ========== HEADER SECTION ========== */
 
 .login-btn {
-    margin-top: 5px;
-    margin-left: 8px;
+  margin-top: 5px;
+  margin-left: 8px;
 }
 
 /* ========== HERO SECTION ========== */
@@ -36,8 +39,15 @@ a {
 
 .hero-slide .overlay {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.3)
+  );
   z-index: 1;
 }
 
@@ -55,15 +65,15 @@ a {
   padding: 12px 30px;
   font-size: 1rem;
   border-radius: 30px;
-  box-shadow: 0 0.25rem 1rem rgba(0,0,0,0.1);
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-.slick-dots {
-    bottom: 10px;
+.hero-slider .slick-dots {
+  bottom: 10px;
 }
 
-.slick-dots li.slick-active button:before {
-    color: #fff !important;
+.hero-slider .slick-dots li.slick-active button:before {
+  color: #fff !important;
 }
 
 /* ========== SERVICES SECTION ========== */
@@ -115,7 +125,9 @@ form label {
   color: #333;
 }
 
-form .form-control, form .form-select, form textarea {
+form .form-control,
+form .form-select,
+form textarea {
   border-radius: 6px;
   box-shadow: none;
   border-color: #ced4da;
@@ -167,13 +179,9 @@ footer {
   color: #eee;
 }
 
-
-
-
-
 .register-container {
   max-width: 400px;
-  margin: 80px auto;
+  margin: 48px auto;
   padding: 30px;
   background: white;
   border-radius: 10px;
@@ -210,32 +218,21 @@ footer {
 }
 
 @keyframes toast-fade {
-  0% { opacity: 0; transform: translateY(-10px); }
-  10% { opacity: 1; transform: translateY(0); }
-  90% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(-10px); }
-}
-
-
-
-
-
-
-
-/* ========== RESPONSIVE ========== */
-@media (max-width: 991.9px) {
-    .login-btn {
-        margin-top: 0;
-        margin-left: 0;
-    }
-}
-
-@media (max-width: 767.9px) {
-  .hero-slide h1 {
-    font-size: 1.8rem;
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  .hero-slide p {
-    font-size: 1rem;
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
   }
 }
 
@@ -261,53 +258,12 @@ footer {
 
 .login-container {
   max-width: 400px;
-  margin: 80px auto;
+  margin: 100px auto;
   padding: 30px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ========== ABOUT US SECTION ========== */
 .about-us-section {
@@ -329,7 +285,6 @@ footer {
   color: #333;
 }
 
-
 /* ========== HOW IT WORKS SECTION ========== */
 .how-it-works h2 {
   font-size: 2rem;
@@ -338,7 +293,6 @@ footer {
 .step-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 12px;
-  background-color: #00000005;
 }
 
 .step-card:hover {
@@ -369,7 +323,6 @@ footer {
 
 .choose-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #00000005;
 }
 
 .choose-card:hover {
@@ -394,46 +347,156 @@ footer {
 }
 
 /* === TESTIMONIALS === */
-.testimonials blockquote {
-  background: #fff;
-  border-left: 4px solid #0d6efd;
-  font-style: italic;
+.testimonials {
+  padding-bottom: 100px;
+}
+.testimonials .container .quotes {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.testimonials .container .quotes .slick-prev:before,
+.testimonials .container .quotes .slick-next:before {
+  content: none;
+}
+.testimonials .slick-dots {
+  bottom: -50px;
+}
+.testimonials .container .quotes button {
+  width: 20px;
+  height: 19px;
+}
+.testimonials .slick-dots li button:before {
+  font-size: 12px;
+  color: #00000069;
+}
+.testimonials .slick-dots li.slick-active button:before {
+  color: #000;
+}
+.testimonials .container .quotes .slick-list .quote-wrapper {
+  margin-left: 25px;
+  margin-right: 25px;
+  background-color: #fff;
+  padding: 30px 50px;
+  border-radius: 13px;
   position: relative;
+  overflow: hidden;
 }
-.testimonials blockquote::before {
-  content: "“";
-  font-size: 3rem;
-  color: #0d6efd;
+.testimonials .container .quotes .slick-list .quote-wrapper::before {
+  content: "";
+  height: 100%;
+  width: 4px;
+  background-color: #333;
   position: absolute;
-  top: -20px;
-  left: 10px;
+  top: 0;
+  left: 0;
 }
-.testimonials footer {
-  color: #666;
+.testimonials .container .quotes .slick-list .quote-wrapper .author {
+  margin-top: 0px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1em;
 }
 
 /* === FAQ SECTION === */
 .faq-section .accordion-button {
   font-weight: 600;
   background-color: #fff;
-  color: #0d6efd;
+  color: #000;
   border: none;
 }
 .faq-section .accordion-button:focus {
   box-shadow: none;
 }
 .faq-section .accordion-button:not(.collapsed) {
-  background-color: #e7f1ff;
+  /* background-color: #0d6efd; */
+  background: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+  color: #fff;
+}
+.accordion-button::after {
+  width: 16px;
+  height: 18px;
+  background-size: 100%;
+}
+.accordion-button:not(.collapsed)::after {
+  filter: invert(1);
 }
 .faq-section .accordion-body {
-  color: #555;
+  color: #333;
   line-height: 1.6;
 }
 
-/* === UTILITIES === */
 .section-title {
   font-weight: 700;
   color: #222;
   margin-bottom: 2rem;
   text-align: center;
+}
+
+.navbar-toggler {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 991.9px) {
+  .login-btn {
+    margin-top: 0;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 767.9px) {
+  .hero-slide h1 {
+    font-size: 1.8rem;
+  }
+  .hero-slide p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .testimonials .container {
+    margin: 0px 0px;
+  }
+  .testimonials .container .quotes {
+    gap: 0px;
+  }
+  .testimonials .container .quotes .slick-list .quote-wrapper {
+    max-height: 270px;
+    min-height: 200px;
+    padding: 20px 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 8px;
+  }
+  .testimonials .container .quotes .slick-list .quote-wrapper::before {
+    content: "";
+    height: 100%;
+    width: 4px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3.004' height='243.671' viewBox='0 0 3.004 243.671'%3E%3Cpath id='Intersection_2' data-name='Intersection 2' d='M0,241V16A15.927,15.927,0,0,1,3,6.664V250.336A15.927,15.927,0,0,1,0,241Z' transform='translate(0 -6.665)' fill='%23333'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 20px 0px 0px 20px;
+  }
+  .testimonials .container .quotes .slick-list .quote-wrapper .quote {
+    font-size: 16px;
+    line-height: 25px;
+  }
+  .testimonials .container .quotes .slick-list .quote-wrapper .author {
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
 }
