@@ -450,6 +450,10 @@ footer {
     margin-top: 0;
     margin-left: 0;
   }
+
+  #welcomeUserLi {
+    display: none;
+  }
 }
 
 @media (max-width: 767.9px) {
