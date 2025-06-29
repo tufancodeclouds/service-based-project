@@ -19,7 +19,7 @@ function showToast(message) {
 
 // Check login status and update navbar/bookings
 function checkLoginStatus() {
-  
+
   JSON.stringify(localStorage.setItem('loggedInUser', '{"name":"John Doe","email":"johndoe@example.com","password":"123"}'));
   
   const user = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -72,7 +72,7 @@ function renderBookings() {
   const emptyMessage = document.getElementById('noBookings');
   const openBookingBtnWrapper = document.getElementById('openBookingBtnWrapper');
 
-  JSON.stringify(localStorage.setItem('bookings', '[{"name":"John Doe","email":"johndoe@example.com","phone":"1234567890","service":"Electrician","date":"2025-06-29","time":"09:30","address":"123 Maple Street, Anytown, PA17101"}]'));
+  JSON.stringify(localStorage.setItem('bookings', '[{"name":"John Doe","email":"johndoe@example.com","phone":"1234567890","service":"Electrician","date":"2025-06-29","time":"09:30","address":"123 Maple Street, Anytown, PA17101"}, {"name":"John Doe","email":"johndoe@example.com","phone":"1234567890","service":"Home Cleaning","date":"2025-06-30","time":"08:30","address":"123 Maple Street, Anytown, PA17101"}]'));
 
   const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
   const user = JSON.parse(localStorage.getItem('loggedInUser'));
