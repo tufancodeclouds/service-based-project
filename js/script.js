@@ -19,9 +19,6 @@ function showToast(message) {
 
 // Check login status and update navbar/bookings
 function checkLoginStatus() {
-
-  JSON.stringify(localStorage.setItem('loggedInUser', '{"name":"John Doe","email":"johndoe@example.com","password":"123"}'));
-  
   const user = JSON.parse(localStorage.getItem('loggedInUser'));
   const loginBtn = document.getElementById('loginBtn');
   const logoutBtn = document.getElementById('logoutBtn');
@@ -175,7 +172,4 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   checkLoginStatus();
   renderBookings();
-
-  $('.openBookingBtn').trigger('click');
-
 });
