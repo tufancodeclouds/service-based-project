@@ -72,8 +72,6 @@ function renderBookings() {
   const emptyMessage = document.getElementById('noBookings');
   const openBookingBtnWrapper = document.getElementById('openBookingBtnWrapper');
 
-  JSON.stringify(localStorage.setItem('bookings', '[{"name":"John Doe","email":"johndoe@example.com","phone":"1234567890","service":"Electrician","date":"2025-06-29","time":"09:30","address":"123 Maple Street, Anytown, PA17101"}, {"name":"John Doe","email":"johndoe@example.com","phone":"1234567890","service":"Home Cleaning","date":"2025-06-30","time":"08:30","address":"123 Maple Street, Anytown, PA17101"}]'));
-
   const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
   const user = JSON.parse(localStorage.getItem('loggedInUser'));
 
@@ -96,7 +94,7 @@ function renderBookings() {
           <strong>${booking.name}</strong> booked <strong>${booking.service}</strong> on <strong>${formatDate(booking.date)}</strong> at <strong>${formatTime(booking.time)}</strong><br>
           <small>${booking.address || ''}</small>
         </div>
-        <button class="btn btn-sm btn-danger" onclick="cancelBooking(${index})">Cancel</button>
+        <button class="btn btn-sm btn-danger rounded-pill" onclick="cancelBooking(${index})">Cancel</button>
       `;
       listWrapper.appendChild(div);
     });
@@ -177,4 +175,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   checkLoginStatus();
   renderBookings();
+
+  $('.openBookingBtn').trigger('click');
+
 });
