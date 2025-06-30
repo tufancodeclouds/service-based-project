@@ -5,7 +5,7 @@ $(document).ready(function () {
     dots: true,
     arrows: false,
     infinite: true,
-    speed: 800,
+    speed: 1200,
     fade: true,
     cssEase: 'ease-in-out',
     prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
@@ -20,7 +20,7 @@ $(document).ready(function () {
     autoplaySpeed: 1200,
     dots: true,
     arrows: false,
-    speed: 800,
+    speed: 1200,
     cssEase: 'ease-in-out',
     responsive: [
       {
