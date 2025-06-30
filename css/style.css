@@ -403,6 +403,10 @@ footer {
   line-height: 1em;
 }
 
+.testimonials .container .quotes .slick-list .quote-wrapper .author .author-name p {
+  margin-bottom: 0;
+}
+
 /* === FAQ SECTION === */
 .faq-section .accordion-button {
   font-weight: 600;
